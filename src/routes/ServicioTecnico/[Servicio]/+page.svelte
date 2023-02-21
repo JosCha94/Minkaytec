@@ -1,5 +1,5 @@
 <script>
-  import Servicio from "../../../components/CardServ.svelte";
+  import Tipo from "../../../components/CardTipoServ.svelte";
   import { page } from '$app/stores';
   console.log($page.params);
   let service = $page.params.Servicio;
@@ -49,8 +49,8 @@
         Selecciona el modo de atención para su {service} del dispositivo.
       </p>
         <div class="row d-flex justify-content-around text-center">
-            <Servicio servicio="A CASA" image="/src/assets/images/home.svg" />
-            <Servicio servicio="REMOTA" image="/src/assets/images/remote.svg" />
+            <Tipo tipo="CASA" image="/src/assets/images/home.svg" tipoURL="/ServicioTecnico/{service}/Casa" />
+            <Tipo tipo="REMOTA" image="/src/assets/images/remote.svg" tipoURL="/ServicioTecnico/{service}/Remota" />
         </div>
     </div>
   </div>
