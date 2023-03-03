@@ -37,7 +37,7 @@
         
       })
       .catch(console.log);
-  };
+  };  
 </script>
 
 <header class="sticky-top">
@@ -115,7 +115,6 @@
         tabindex="-1"
         id="offcanvasNavbar"
         aria-labelledby="offcanvasNavbarLabel"
-        style="width:20%"
       >
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
@@ -160,13 +159,14 @@
               <a class="nav-link" href="/">Nosotros</a>
             </li>
             <li class="nav-item">
+
               <button
                 type="button"
-                class="btn btn-primary"
+                class="btn btn-link ms-0"
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                data-bs-target="#modalRegistro"
               >
-                Launch demo modal
+                Registrarse
               </button>
             </li>
           </ul>
@@ -177,11 +177,11 @@
 </header>
 
 <!-- MODAL REGISTRO -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="modalRegistroLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="modalRegistroLabel">Registro de nuevo Usuario</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -261,7 +261,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <button
         type="button"
         class="btn btn-primary"
@@ -278,5 +278,18 @@
     color: #0079c1;
     font-weight: 500;
   }
+  .btn-link{
+    color: #0079c1;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .offcanvas-end {
+    width:50%;
+  }
+  @media (min-width: 768px) {
+  .offcanvas-end {
+    width:20%;
+  }
+}
 
 </style>
