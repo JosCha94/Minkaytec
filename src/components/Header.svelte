@@ -30,14 +30,10 @@
       .then((datosRespuesta) => {
         // console.log(datosRespuesta) PARA VER SI HAY ERRORES
         // mostrarUsuarios();
-        datosUsuario = {
-
-        };
-          
-        
+        datosUsuario = {};
       })
       .catch(console.log);
-  };  
+  };
 </script>
 
 <header class="sticky-top">
@@ -159,7 +155,6 @@
               <a class="nav-link" href="/">Nosotros</a>
             </li>
             <li class="nav-item">
-
               <button
                 type="button"
                 class="btn btn-link ms-0"
@@ -177,17 +172,31 @@
 </header>
 
 <!-- MODAL REGISTRO -->
-<div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="modalRegistroLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modalRegistro"
+  tabindex="-1"
+  aria-labelledby="modalRegistroLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalRegistroLabel">Registro de nuevo Usuario</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="modalRegistroLabel">
+          Registro de nuevo Usuario
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        />
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <label for="nombres" class="form-label">Nombres <small
-            class="text-danger">*</small></label>
+          <label for="nombres" class="form-label"
+            >Nombres <small class="text-danger">*</small></label
+          >
           <input
             type="text"
             bind:value={datosUsuario.nombres}
@@ -196,8 +205,9 @@
           />
         </div>
         <div class="mb-3">
-          <label for="apellidos" class="form-label">Apellidos <small
-            class="text-danger">*</small></label>
+          <label for="apellidos" class="form-label"
+            >Apellidos <small class="text-danger">*</small></label
+          >
           <input
             type="text"
             bind:value={datosUsuario.apellidos}
@@ -205,9 +215,10 @@
             id="apellidos"
           />
         </div>
-         <div class="mb-3">
-          <label for="tipo_doc" class="form-label">Tipo de Documento <small
-            class="text-danger">*</small></label>
+        <div class="mb-3">
+          <label for="tipo_doc" class="form-label"
+            >Tipo de Documento <small class="text-danger">*</small></label
+          >
           <select
             class="form-select"
             bind:value={datosUsuario.tipo_documento}
@@ -220,8 +231,9 @@
           </select>
         </div>
         <div class="mb-3">
-          <label for="num_doc" class="form-label">N° del documento <small
-            class="text-danger">*</small></label>
+          <label for="num_doc" class="form-label"
+            >N° del documento <small class="text-danger">*</small></label
+          >
           <input
             type="text"
             bind:value={datosUsuario.numero_documento}
@@ -230,8 +242,9 @@
           />
         </div>
         <div class="mb-3">
-          <label for="telefono" class="form-label">Telefono <small
-            class="text-danger">*</small></label>
+          <label for="telefono" class="form-label"
+            >Telefono <small class="text-danger">*</small></label
+          >
           <input
             type="tel"
             bind:value={datosUsuario.telefono}
@@ -240,8 +253,9 @@
           />
         </div>
         <div class="mb-3">
-          <label for="mail" class="form-label">Correo <small
-            class="text-danger">*</small></label>
+          <label for="mail" class="form-label"
+            >Correo <small class="text-danger">*</small></label
+          >
           <input
             type="email"
             bind:value={datosUsuario.correo}
@@ -261,12 +275,14 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          >Cancelar</button
+        >
         <button
-        type="button"
-        class="btn btn-primary"
-        on:click|preventDefault={agregarUsuario}>Registrarse</button
-      >
+          type="button"
+          class="btn btn-primary"
+          on:click|preventDefault={agregarUsuario}>Registrarse</button
+        >
       </div>
     </div>
   </div>
@@ -278,18 +294,17 @@
     color: #0079c1;
     font-weight: 500;
   }
-  .btn-link{
+  .btn-link {
     color: #0079c1;
     font-weight: 500;
     text-decoration: none;
   }
   .offcanvas-end {
-    width:50%;
+    width: 50%;
   }
   @media (min-width: 768px) {
-  .offcanvas-end {
-    width:20%;
+    .offcanvas-end {
+      width: 20%;
+    }
   }
-}
-
 </style>
