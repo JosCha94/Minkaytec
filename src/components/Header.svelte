@@ -10,9 +10,8 @@
     password: "",
   };
 
-  let agregarUsuario = () => {
+  let agregarUsuario = async () => {
     const nuevoUsuario = {
-      // id: datosUsuario.id,
       nombres: datosUsuario.nombres,
       apellidos: datosUsuario.apellidos,
       tipo_documento: datosUsuario.tipo_documento,
@@ -22,17 +21,23 @@
       password: datosUsuario.password,
     };
 
-    fetch("http://localhost/Minkaytec/?insertar=1", {
-      method: "POST",
-      body: JSON.stringify(nuevoUsuario),
-    })
-      .then((respuesta) => respuesta.json())
-      .then((datosRespuesta) => {
-        // console.log(datosRespuesta) PARA VER SI HAY ERRORES
-        // mostrarUsuarios();
-        datosUsuario = {};
-      })
-      .catch(console.log);
+    const respuesta = await fetch(
+      "http://localhost/Minkaytec/Laravel_minkaytec_api/public/api/usuariocreate",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(nuevoUsuario),
+      }
+    );
+    const data = await respuesta.json();
+    if (data.estado == 1) {
+      alert(data.message);
+      datosUsuario = {};
+    }else{
+      alert(data.message);
+    }
   };
 </script>
 
@@ -192,98 +197,101 @@
           aria-label="Close"
         />
       </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="nombres" class="form-label"
-            >Nombres <small class="text-danger">*</small></label
-          >
-          <input
-            type="text"
-            bind:value={datosUsuario.nombres}
-            class="form-control"
-            id="nombres"
-          />
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="nombres" class="form-label"
+              >Nombres <small class="text-danger">*</small></label
+            >
+            <input
+              type="text"
+              bind:value={datosUsuario.nombres}
+              class="form-control"
+              id="nombres"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="apellidos" class="form-label"
+              >Apellidos <small class="text-danger">*</small></label
+            >
+            <input
+              type="text"
+              bind:value={datosUsuario.apellidos}
+              class="form-control"
+              id="apellidos"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="tipo_doc" class="form-label"
+              >Tipo de Documento <small class="text-danger">*</small></label
+            >
+            <select
+              class="form-select"
+              bind:value={datosUsuario.tipo_documento}
+              aria-label="Default select example"
+              id="tipo_doc"
+            >
+              <option>Selecciona el tipo documento</option>
+              <option value="DNI">DNI</option>
+              <option value="DNI">DNI</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="num_doc" class="form-label"
+              >N° del documento <small class="text-danger">*</small></label
+            >
+            <input
+              type="text"
+              bind:value={datosUsuario.numero_documento}
+              class="form-control"
+              id="num_doc"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label"
+              >Telefono <small class="text-danger">*</small></label
+            >
+            <input
+              type="tel"
+              bind:value={datosUsuario.telefono}
+              class="form-control"
+              id="telefono"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="mail" class="form-label"
+              >Correo <small class="text-danger">*</small></label
+            >
+            <input
+              type="email"
+              bind:value={datosUsuario.correo}
+              class="form-control"
+              id="mail"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="pass" class="form-label"
+              >Contraseña <small class="text-danger">*</small></label
+            >
+            <input
+              type="password"
+              bind:value={datosUsuario.password}
+              class="form-control"
+              id="pass"
+            />
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="apellidos" class="form-label"
-            >Apellidos <small class="text-danger">*</small></label
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal">Cancelar</button
           >
-          <input
-            type="text"
-            bind:value={datosUsuario.apellidos}
-            class="form-control"
-            id="apellidos"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="tipo_doc" class="form-label"
-            >Tipo de Documento <small class="text-danger">*</small></label
+          <button
+            type="button"
+            class="btn btn-primary"
+            on:click|preventDefault={agregarUsuario}>Registrarse</button
           >
-          <select
-            class="form-select"
-            bind:value={datosUsuario.tipo_documento}
-            aria-label="Default select example"
-            id="tipo_doc"
-          >
-            <option>Selecciona el tipo documento</option>
-            <option value="DNI">DNI</option>
-            <option value="DNI">DNI</option>
-          </select>
         </div>
-        <div class="mb-3">
-          <label for="num_doc" class="form-label"
-            >N° del documento <small class="text-danger">*</small></label
-          >
-          <input
-            type="text"
-            bind:value={datosUsuario.numero_documento}
-            class="form-control"
-            id="num_doc"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="telefono" class="form-label"
-            >Telefono <small class="text-danger">*</small></label
-          >
-          <input
-            type="tel"
-            bind:value={datosUsuario.telefono}
-            class="form-control"
-            id="telefono"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="mail" class="form-label"
-            >Correo <small class="text-danger">*</small></label
-          >
-          <input
-            type="email"
-            bind:value={datosUsuario.correo}
-            class="form-control"
-            id="mail"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="pass" class="form-label">Contraseña <small
-            class="text-danger">*</small></label>
-          <input
-            type="password"
-            bind:value={datosUsuario.password}
-            class="form-control"
-            id="pass"
-          />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-          >Cancelar</button
-        >
-        <button
-          type="button"
-          class="btn btn-primary"
-          on:click|preventDefault={agregarUsuario}>Registrarse</button
-        >
-      </div>
     </div>
   </div>
 </div>
