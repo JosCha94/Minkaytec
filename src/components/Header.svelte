@@ -33,7 +33,7 @@
     );
     const data = await respuesta.json();
     alert(data.message);
-    if (data.estado == 1) {      
+    if (data.estado == 1) {
       datosUsuario = {};
     }
   };
@@ -195,7 +195,8 @@
           aria-label="Close"
         />
       </div>
-        <div class="modal-body">
+      <div class="modal-body">
+        <form on:submit|preventDefault={agregarUsuario}>
           <div class="mb-3">
             <label for="nombres" class="form-label"
               >Nombres <small class="text-danger">*</small></label
@@ -204,7 +205,10 @@
               type="text"
               bind:value={datosUsuario.nombres}
               class="form-control"
+              pattern="([A-Z][a-záéíóúñ]+[\s])([A-Z][a-záéíóúñ]+)|([A-Z][a-záéíóúñ]+)"
+              title="La primera letra de cada nombre debe estar en mayuscula, si tu nombre es compuesto debe haber 1 espacio de separación entre cada nombre"
               id="nombres"
+              required
             />
           </div>
           <div class="mb-3">
@@ -215,7 +219,10 @@
               type="text"
               bind:value={datosUsuario.apellidos}
               class="form-control"
+              pattern="([A-Z][a-záéíóúñ]+[\s])([A-Z][a-záéíóúñ]+)|([A-Z][a-záéíóúñ]+)"
+              title="La primera letra de cada apellido debe estar en mayuscula y debe haber 1 espacio de separación entre cada apellido"
               id="apellidos"
+              required
             />
           </div>
           <div class="mb-3">
@@ -227,10 +234,13 @@
               bind:value={datosUsuario.tipo_documento}
               aria-label="Default select example"
               id="tipo_doc"
+              required
             >
               <option>Selecciona el tipo documento</option>
               <option value="DNI">DNI</option>
-              <option value="DNI">DNI</option>
+              <option value="CARNET DE EXTRANJERIA"
+                >CARNET DE EXTRANJERIA</option
+              >
             </select>
           </div>
           <div class="mb-3">
@@ -242,17 +252,28 @@
               bind:value={datosUsuario.numero_documento}
               class="form-control"
               id="num_doc"
+              minlength="8"
+              maxlength="12"
+              pattern="([0-9]+)"
+              title="El DNI debe tener 8 digitos y el CARNET DE EXTRANJERIA 12 digitos"
+              required
             />
           </div>
+
           <div class="mb-3">
             <label for="telefono" class="form-label"
-              >Telefono <small class="text-danger">*</small></label
+              >Telefono Celular <small class="text-danger">*</small></label
             >
             <input
               type="tel"
               bind:value={datosUsuario.telefono}
               class="form-control"
+              minlength="9"
+              maxlength="9"
+              pattern="([0-9]+)"
+              title="El telefono celular solo debe tener 9 digitos, no es necesario agregar codigo del pais"
               id="telefono"
+              required
             />
           </div>
           <div class="mb-3">
@@ -263,7 +284,9 @@
               type="email"
               bind:value={datosUsuario.correo}
               class="form-control"
+              title="El formato del correo debe ser: xxxx@ejm.com"
               id="mail"
+              required
             />
           </div>
           <div class="mb-3">
@@ -274,22 +297,28 @@
               type="password"
               bind:value={datosUsuario.password}
               class="form-control"
+              minlength="6"
+              maxlength="10"
+              title="La contraseña debe tener de 6 a 10 caracteres"
               id="pass"
+              required
             />
           </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal">Cancelar</button
-          >
-          <button
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary ">Registrarse</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          >Cancelar</button
+        >
+        <!-- <button
             type="button"
             class="btn btn-primary"
             on:click|preventDefault={agregarUsuario}>Registrarse</button
-          >
-        </div>
+          > -->
+      </div>
     </div>
   </div>
 </div>
