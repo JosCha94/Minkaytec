@@ -32,11 +32,9 @@
       }
     );
     const data = await respuesta.json();
-    if (data.estado == 1) {
-      alert(data.message);
+    alert(data.message);
+    if (data.estado == 1) {      
       datosUsuario = {};
-    }else{
-      alert(data.message);
     }
   };
 </script>
