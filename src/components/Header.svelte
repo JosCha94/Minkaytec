@@ -236,28 +236,54 @@
               id="tipo_doc"
               required
             >
-              <option>Selecciona el tipo documento</option>
+              <option value="">Selecciona el tipo documento</option>
               <option value="DNI">DNI</option>
-              <option value="CARNET DE EXTRANJERIA"
-                >CARNET DE EXTRANJERIA</option
-              >
+              <option value="CARNETEXTRANJERIA">CARNET DE EXTRANJERIA</option>
             </select>
           </div>
           <div class="mb-3">
             <label for="num_doc" class="form-label"
               >N° del documento <small class="text-danger">*</small></label
             >
-            <input
-              type="text"
-              bind:value={datosUsuario.numero_documento}
-              class="form-control"
-              id="num_doc"
-              minlength="8"
-              maxlength="12"
-              pattern="([0-9]+)"
-              title="El DNI debe tener 8 digitos y el CARNET DE EXTRANJERIA 12 digitos"
-              required
-            />
+            {#if datosUsuario.tipo_documento == "" || datosUsuario.tipo_documento == undefined}
+              <input
+                type="text"
+                bind:value={datosUsuario.numero_documento}
+                class="form-control bg-body"
+                id="num_doc"
+                minlength="8"
+                maxlength="12"
+                pattern="([0-9]+)"
+                title="El DNI debe tener 8 digitos y el CARNET DE EXTRANJERIA 12 digitos"
+                required disabled
+              />
+            {/if}
+            {#if datosUsuario.tipo_documento == "DNI"}
+              <input
+                type="text"
+                bind:value={datosUsuario.numero_documento}
+                class="form-control"
+                id="num_doc"
+                minlength="8"
+                maxlength="8"
+                pattern="([0-9]+)"
+                title="El DNI debe tener 8 digitos"
+                required
+              />
+            {/if}
+            {#if datosUsuario.tipo_documento == "CARNETEXTRANJERIA"}
+              <input
+                type="text"
+                bind:value={datosUsuario.numero_documento}
+                class="form-control"
+                id="num_doc"
+                minlength="12"
+                maxlength="12"
+                pattern="([0-9]+)"
+                title="El CARNET DE EXTRANJERIA debe tener 12 digitos"
+                required
+              />
+            {/if}
           </div>
 
           <div class="mb-3">
@@ -265,7 +291,7 @@
               >Telefono Celular <small class="text-danger">*</small></label
             >
             <input
-              type="tel"
+              type="text"
               bind:value={datosUsuario.telefono}
               class="form-control"
               minlength="9"
