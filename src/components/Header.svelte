@@ -248,7 +248,7 @@
             >
               <option value="">Selecciona el tipo documento</option>
               <option value="DNI">DNI</option>
-              <option value="CARNETEXTRANJERIA">CARNET DE EXTRANJERIA</option>
+              <option value="CARNET_EXTRANJERIA">CARNET DE EXTRANJERIA</option>
             </select>
           </div>
           <div class="mb-3">
