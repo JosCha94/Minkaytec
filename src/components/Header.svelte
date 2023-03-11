@@ -134,6 +134,26 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
+              <button
+                type="button"
+                class="btn btn-link ms-0"
+                data-bs-toggle="modal"
+                data-bs-target="#modalSesion"
+              >
+                Iniciar Sesión
+              </button>
+            </li>
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn btn-link ms-0"
+                data-bs-toggle="modal"
+                data-bs-target="#modalRegistro"
+              >
+                Registrarse
+              </button>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
@@ -156,16 +176,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/">Nosotros</a>
-            </li>
-            <li class="nav-item">
-              <button
-                type="button"
-                class="btn btn-link ms-0"
-                data-bs-toggle="modal"
-                data-bs-target="#modalRegistro"
-              >
-                Registrarse
-              </button>
             </li>
           </ul>
         </div>
@@ -255,7 +265,8 @@
                 maxlength="12"
                 pattern="([0-9]+)"
                 title="El DNI debe tener 8 digitos y el CARNET DE EXTRANJERIA 12 digitos"
-                required disabled
+                required
+                disabled
               />
             {/if}
             {#if datosUsuario.tipo_documento == "DNI"}
@@ -343,8 +354,55 @@
             type="button"
             class="btn btn-primary"
             on:click|preventDefault={agregarUsuario}>Registrarse</button
-          > -->
+          > -->                
       </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="modalSesion"
+  tabindex="-1"
+  aria-labelledby="modalSesionLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalSesionLabel">Login de usuario</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        />
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="correoSesion" class="form-label">Correo electronico</label>
+            <input type="email" class="form-control" id="correoSesion">
+          </div>
+          <div class="mb-3">
+            <label for="passSesion" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="passSesion">
+          </div>
+          <!-- <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> -->
+          <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          >Cerrar</button
+        >
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          >Close</button
+        >
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
     </div>
   </div>
 </div>
